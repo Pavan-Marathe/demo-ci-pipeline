@@ -1,20 +1,28 @@
 package org.example;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 public class syntax extends driverSetup {
 
     @Test
 
     public void test() throws InterruptedException, IOException {
+
+//        For waitting time to catch elements
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement Demo = driver.findElement(By.xpath("Example"));
         Actions action = new Actions(driver);
@@ -87,8 +95,48 @@ public class syntax extends driverSetup {
         driver.switchTo().newWindow(org.openqa.selenium.WindowType.TAB); // Open new tab window.
         driver.get("https://yopmail.com/en/");
 
+//      Store the main window
+        String firstWindow = driver.getWindowHandle();
+
+//      Store second window handle
+        String secondWindow = "";
+        for (String win : driver.getWindowHandles()) {
+            if (!win.equals(firstWindow)) {
+                secondWindow = win;
+            }
+        }
+//        For switch on second window handle
+        driver.switchTo().window(secondWindow);
+
+//        For get copy syntax
+        String emailBody = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("mail"))).getText();
+        String otp = emailBody.replaceAll("[^0-9]", "").substring(0, 6);
+
+//      Normally we can apply sendkeys to paste anything there.
+        WebElement otpBox = wait.until(ExpectedConditions.elementToBeClickable(By.id("otpInput")));
+        otpBox.sendKeys(otp);
 
 
+//        For use normal and incognito window with symuteniously
+// Normal window (Account A) // Login Account A in driver1
+        WebDriver driver1 = new ChromeDriver();
+        driver1.get("https://yourapp.com/login");
+
+// Incognito window (Account B) // Login Account B in driver2
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito");
+        WebDriver driver2 = new ChromeDriver(options);
+        driver2.get("https://yourapp.com/login");
+
+//        For select a frame include selectable options
+        List<WebElement> categories = driver.findElements(By.cssSelector("div.spaceTreeWrapper .ant-tree-treenode"));
+
+//        Now Select any option with mention like "NzQSsnjGdb" included in frame
+        WebElement category = driver.findElement(By.xpath("//span[contains(text(),'NzQSsnjGdb')]"));
+        category.click();
+
+//        For apply fast clicking event where clicking isn't working fine
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", category);
 
     }
 

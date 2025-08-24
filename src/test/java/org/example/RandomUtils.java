@@ -42,13 +42,26 @@ public class RandomUtils {
             sb.append(chars.charAt(rand.nextInt(chars.length())));
         }
         return sb.toString();
+
     }
+
+    public static String rndSmallchar(int length) {
+
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            sb.append((char) ('a' + random.nextInt(26)));
+        }
+        return sb.toString();
+    }
+
 
 //    public static void main(String[] args) {
 //        System.out.println("Digits(8): "       + randomDigits(8));
 //        System.out.println("Letters(8): "      + randomAlpha(8));
 //        System.out.println("Alphanum(12): "    + randomAlphanumeric(12));
 //        System.out.println("Random name: "     + randomName());
+//        System.out.println("Random Small letters:" + rndSmallchar(8)); // Example: "xqjmbtza"
 //    }
     
 }

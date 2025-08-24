@@ -34,7 +34,28 @@ public class LastAvtarSelect extends rukkor_login {
             System.out.println("No avatars found!");
         }
 
+        WebElement SpaceMenu = wait.until(ExpectedConditions.elementToBeClickable(
+                By.cssSelector(".svg-inline--fa.fa-angle-down")));
+        SpaceMenu.click();
 
+        List<WebElement> SpaceArrowContent = driver.findElements(By.cssSelector("body > div:nth-child(4) > div"));
+        WebElement CreateCat = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//span[contains(text(),'Create Category')]")));
+        CreateCat.click();
+
+        String rndCatName = RandomUtils.randomAlpha(10);
+        String catNameEnter = "Cat" + rndCatName;
+        WebElement CatName = wait.until(ExpectedConditions.elementToBeClickable(
+                By.id("formcategory_name")));
+        CatName.sendKeys(catNameEnter);
+
+        System.out.println("Created Category name is :- " + catNameEnter);
+
+        WebElement Createbtn = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//button[@type='button']//span[contains(text(),'Create')]")));
+        Createbtn.click();
+
+        Thread.sleep(1000);
 
         List<WebElement> categories = driver.findElements(By.cssSelector("div.spaceTreeWrapper .ant-tree-treenode"));
 

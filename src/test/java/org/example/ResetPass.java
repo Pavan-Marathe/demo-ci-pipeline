@@ -19,7 +19,10 @@ public class ResetPass extends driverSetup {
 //        1st window is opened.
         driver.get("https://dev.app.rukkor.com/login");
 
-        WebElement chooseresetPass = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"loginForm\"]/div[2]/button[2]")));
+        Thread.sleep(1000);
+
+        WebElement chooseresetPass = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//*[@id=\"loginForm\"]/div[2]/button[2]")));
         chooseresetPass.click();
 
         WebElement EnterEmail = wait.until(ExpectedConditions.elementToBeClickable(By.id("ResetPassword_email")));

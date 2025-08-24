@@ -160,7 +160,7 @@ public class rukkorCreateSpace extends rukkor_login {
         WebElement UploadPic = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.cssSelector("input[type='file']")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.display='block';", UploadPic);
-        UploadPic.sendKeys("C:\\Users\\Pavan Marathe\\Desktop\\tiger123.jpg");
+        UploadPic.sendKeys("D:\\SetProfileImage\\7b133ca6-76f4-4bd9-b659-816a0584ded8.jpg");
 
 //        Wait for upload file
         Thread.sleep(5000);

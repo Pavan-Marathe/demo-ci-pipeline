@@ -21,7 +21,7 @@ public class rukkor_login extends driverSetup {
 
         // Step 2: Enter login credentials
         WebElement username = wait.until(ExpectedConditions.elementToBeClickable(By.id("loginForm_email")));
-        username.sendKeys("john815@yopmail.com");
+        username.sendKeys("samlorpp@yopmail.com");
 
         WebElement pass = wait.until(ExpectedConditions.elementToBeClickable(By.id("loginForm_password")));
         pass.sendKeys("Demo@12345");
@@ -36,7 +36,7 @@ public class rukkor_login extends driverSetup {
         driver.switchTo().newWindow(org.openqa.selenium.WindowType.TAB);
         driver.get("https://yopmail.com/en/");
 
-        String yopmailUser = "john815@yopmail.com";
+        String yopmailUser = "samlorpp@yopmail.com";
         driver.findElement(By.id("login")).sendKeys(yopmailUser);
         driver.findElement(By.id("refreshbut")).click();
 

@@ -111,9 +111,9 @@ public class ChatFlow extends rukkor_login {
         Thread.sleep(1000);
 
         WebElement createBtn = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//button[contains(.,'Create')]")));
-        actions.moveToElement(createBtn).pause(Duration.ofSeconds(1)).perform();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", createBtn);
+                By.xpath("//button[@type='button']//span[contains(text(),'Create')]")));
+        //button[@type='button']//span[contains(text(),'Create')]
+        createBtn.click();
 
         WebElement Inputbox = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath("//*[@id=\"tiptapcontent\"]/div/p")));

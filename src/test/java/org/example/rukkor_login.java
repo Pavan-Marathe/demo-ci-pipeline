@@ -14,14 +14,16 @@ public class rukkor_login extends driverSetup {
     @BeforeClass
 
     public void performLogin() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Step 1: Open Login Page
         driver.get("https://dev.app.rukkor.com/login");
 
+        Thread.sleep(1000);
+
         // Step 2: Enter login credentials
         WebElement username = wait.until(ExpectedConditions.elementToBeClickable(By.id("loginForm_email")));
-        username.sendKeys("samlorpp@yopmail.com");
+        username.sendKeys("jessy.test@yopmail.com");
 
         WebElement pass = wait.until(ExpectedConditions.elementToBeClickable(By.id("loginForm_password")));
         pass.sendKeys("Demo@12345");
@@ -36,7 +38,7 @@ public class rukkor_login extends driverSetup {
         driver.switchTo().newWindow(org.openqa.selenium.WindowType.TAB);
         driver.get("https://yopmail.com/en/");
 
-        String yopmailUser = "samlorpp@yopmail.com";
+        String yopmailUser = "jessy.test@yopmail.com";
         driver.findElement(By.id("login")).sendKeys(yopmailUser);
         driver.findElement(By.id("refreshbut")).click();
 

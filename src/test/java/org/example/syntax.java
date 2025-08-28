@@ -31,7 +31,7 @@ public class syntax extends driverSetup {
 //        For smooth scrolling
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView({behavior : 'smooth', block : 'center'});", Demo);
-        js.executeScript("arguments[0].focus();" , Demo);
+        js.executeScript("arguments[0].focus();", Demo);
 
 //        For autofocus on element to scrolling.
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Demo);
@@ -53,7 +53,7 @@ public class syntax extends driverSetup {
 
 //        For driver manage window resize.
         driver.manage().window().maximize();
-        driver.manage().window().setSize(new Dimension(2300,720));
+        driver.manage().window().setSize(new Dimension(2300, 720));
         driver.manage().window().fullscreen();
 //        For set position
         driver.manage().window().setPosition(new Point(0, 0)); // Move to top-left
@@ -74,7 +74,7 @@ public class syntax extends driverSetup {
         File shot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         File dest = new File("Capture_03.png");
 
-        FileHandler.copy(shot,dest);
+        FileHandler.copy(shot, dest);
         System.out.println("Screenshot taken at destination folder :-" + dest.getAbsolutePath());
 
 
@@ -83,7 +83,7 @@ public class syntax extends driverSetup {
             /* Script*/
 
 //	   Intentionally fail this test case to verify the report
-        	Assert.assertTrue(false, "Intentional failure for testing report");
+            Assert.assertTrue(false, "Intentional failure for testing report");
             Assert.assertTrue(true, "Intentional failure for testing report");
 
         } catch (Exception e) {
@@ -137,6 +137,31 @@ public class syntax extends driverSetup {
 
 //        For apply fast clicking event where clicking isn't working fine
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", category);
+
+
+//        For Select any one xpath from the both we can set by this way
+             WebElement createBtn;
+        try {
+            createBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("/html/body/div[6]/div/div[2]/div/div[1]/div/div[3]/button[2]")));
+        } catch (TimeoutException e) {
+            createBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("/html/body/div[7]/div/div[2]/div/div[1]/div/div[3]/button[2]")));
+    }
+        createBtn.click();
+
+//Dropdown handling method for ant design
+        WebElement connectAs = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//*[@id=\"Layout\"]/div/div[2]/div[3]/div[2]/div[1]/div[1]/div[1]/form/div[1]/div/div/div/div/div/div")));
+        connectAs.click();
+
+        WebElement DropDn = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[@class='ant-select-item-option-content' and text()='Real Id']")));
+        DropDn.click();
+        Thread.sleep(500);
+
+
+
 
     }
 

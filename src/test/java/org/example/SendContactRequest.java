@@ -1,3 +1,5 @@
+
+///This send contact request as normal way without use of looping :-
 package org.example;
 
 import org.openqa.selenium.By;
@@ -9,7 +11,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.time.Duration;
 
-public class ContactRequest extends rukkor_login {
+public class SendContactRequest extends rukkor_login {
 
     @Test
     public void contactRequest1() throws InterruptedException, IOException {

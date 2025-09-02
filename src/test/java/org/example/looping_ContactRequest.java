@@ -18,31 +18,18 @@ public class looping_ContactRequest extends rukkor_login {
 
         // List of test emails
         String[] emails = {
-                "binnie039@yopmail.com",
-                "jeremy040@yopmail.com",
-                "joseph041@yopmail.com",
-                "amia042@yopmail.com",
-                "jessy043@yopmail.com",
-                "bobby044@yopmail.com",
-                "Sophia045@yopmail.com",
-                "alec046@yopmail.com",
-                "alma047@yopmail.com",
-                "helen048@yopmail.com",
-                "alias049@yopmail.com",
-                "Real050@yopmail.com",
-                "alias051@yopmail.com",
-                "frank052@yopmail.com",
-                "ernest053@yopmail.com",
-                "will054@yopmail.com",
-                "tamsin055@yopmail.com",
-                "peter056@yopmail.com",
-                "emma057@yopmail.com",
-                "juno058@yopmail.com",
-                "una059@yopmail.com",
-                "robert060@yopmail.com",
-                "stephen061@yopmail.com"
+//                Email reg. users
+                "john815@yopmail.com",
+                "smith217@yopmail.com",
+                "sunny007@yopmail.com",
+                "sunil008@yopmail.com",
+                "first@yopmail.com",
+                "jack010@yopmail.com",
+                "jiten013@yopmail.com",
+                "amar014@yopmail.com",
+                "martin015@yopmail.com",
+                "julie016@yopmail.com"
         };
-
 
         for (String emailId : emails) {
 

@@ -5,7 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
 
 import java.time.Duration;
 
@@ -23,7 +22,7 @@ public class rukkor_login extends driverSetup {
 
         // Step 2: Enter login credentials
         WebElement username = wait.until(ExpectedConditions.elementToBeClickable(By.id("loginForm_email")));
-        username.sendKeys("jessy.test@yopmail.com");
+        username.sendKeys("samnuaqd@yopmail.com");
 
         WebElement pass = wait.until(ExpectedConditions.elementToBeClickable(By.id("loginForm_password")));
         pass.sendKeys("Demo@12345");
@@ -38,7 +37,7 @@ public class rukkor_login extends driverSetup {
         driver.switchTo().newWindow(org.openqa.selenium.WindowType.TAB);
         driver.get("https://yopmail.com/en/");
 
-        String yopmailUser = "jessy.test@yopmail.com";
+        String yopmailUser = "samnuaqd@yopmail.com";
         driver.findElement(By.id("login")).sendKeys(yopmailUser);
         driver.findElement(By.id("refreshbut")).click();
 

@@ -13,7 +13,9 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class syntax extends driverSetup {
 
@@ -195,8 +197,7 @@ public class syntax extends driverSetup {
         try {
             // First XPath
             acceptBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("OPtion 1"))
-            );
+                    By.xpath("OPtion 1")));
         } catch (TimeoutException e1) {
             try {
                 // Second XPath
@@ -247,7 +248,21 @@ public class syntax extends driverSetup {
         ((JavascriptExecutor) driver).executeScript("window.sessionStorage.clear();");
 
 ///==========================================================================================================================================
+//        For clear local storage
+        ((JavascriptExecutor) driver).executeScript("window.localStorage.clear();");
 
+        // Get all tab handles
+        Set<String> allTabs = driver.getWindowHandles();
+        List<String> tabs = new ArrayList<>(allTabs);
+
+// Switch to the tab you want to close (example: second tab, index 1)
+        driver.switchTo().window(tabs.get(1));
+
+// Close the selected tab
+        driver.close();
+
+// Switch back to first tab (optional)
+        driver.switchTo().window(tabs.get(0));
 
 
     }

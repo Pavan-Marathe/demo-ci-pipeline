@@ -40,11 +40,12 @@ public class AcceptContGrpRequest extends rukkor_login {
             }
 
             // Click first request
-            requests.get(0).click();
+            try {
+                requests.get(0).click();
 
             // Handle Accept button (contact OR group)
             WebElement acceptBtn;
-            boolean isGroup = false;
+//            boolean isGroup = false;
             try {
                 // Contact request
                 acceptBtn = wait.until(ExpectedConditions.elementToBeClickable(
@@ -53,7 +54,7 @@ public class AcceptContGrpRequest extends rukkor_login {
                 // Group Request
                 acceptBtn = wait.until(ExpectedConditions.elementToBeClickable(
                         By.xpath("//div[contains(@id,'r')]//button[2][span[normalize-space()='ACCEPT_REAL_ID_GROUP']]")));
-                isGroup = true;
+//                isGroup = true;
             }
 
             // Click using Actions (to avoid overlay issues)
@@ -61,7 +62,7 @@ public class AcceptContGrpRequest extends rukkor_login {
             actions.moveToElement(acceptBtn).pause(Duration.ofMillis(300)).click().perform();
 
             // Wait until button disappears after clicking
-            try {
+          /*  try {
                 if (isGroup) {
                     wait.withTimeout(Duration.ofSeconds(15))
                             .until(ExpectedConditions.invisibilityOf(acceptBtn));
@@ -72,7 +73,13 @@ public class AcceptContGrpRequest extends rukkor_login {
                 System.out.println("✅ Request accepted successfully.");
             } catch (TimeoutException e) {
                 System.out.println("⚠️ Accept button did not disappear in time.");
+            }*/
+
+            }catch (TimeoutException e2){
+                System.out.println("Request not found then next log-in run.");
             }
+
+
         }
     }
 
